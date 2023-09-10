@@ -1,0 +1,55 @@
+﻿@page
+@addTagHelper*, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IndexModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style type="text/css">
+        body {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <form method="post">
+        <table width="100%">
+            <tr>
+                <td align="center"><input asp-for="Values.Values" type="text" style="width: 800px"/></td>
+                <td><span asp-validation-for="Values.Values" class="error"></span></td>
+            </tr>
+            <tr>
+                <td align="center"><input type="submit" value="Submit" asp-page-handler="Submit" /></td>
+            </tr>
+        </table>
+        <hr />
+
+        <table width="100%">
+            <tr>
+                <td align="center">
+                    @if (ViewData.ModelState.IsValid)
+                    {
+                        @ViewData["Values"]
+                    }
+                </td>
+            </tr>
+        </table>
+        
+        
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.js"></script>
+    </form>
+</body>
+</html>
